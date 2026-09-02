@@ -4,7 +4,6 @@ require_once __DIR__ . '/includes/functions.php';
 
 $data = load_agendas();
 $agendas = $data['agendas'];
-// الأحدث أولًا
 $agendas = array_reverse($agendas);
 ?>
 <!DOCTYPE html>
@@ -24,7 +23,7 @@ $agendas = array_reverse($agendas);
         <div class="brand">
             <span class="brand-mark" aria-hidden="true"></span>
             <div>
-                <h1>أجندة اجتماع</h1>
+                <h1>أجندة الاجتماع</h1>
                 <p class="brand-sub">قائمة بنود الاجتماع ومتابعتها</p>
             </div>
         </div>
@@ -80,7 +79,7 @@ $agendas = array_reverse($agendas);
     <p class="footer-year"><?= date('Y') ?></p>
 </footer>
 
-<!-- نافذة إضافة أجندة -->
+
 <div class="modal-overlay" id="addAgendaModal">
     <div class="modal-box">
         <h3>إضافة أجندة جديدة</h3>
