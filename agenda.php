@@ -29,7 +29,6 @@ $doneCount = count(array_filter($agenda['items'], fn($i) => $i['done']));
 
 <header class="topbar">
     <div class="topbar-inner">
-        <a href="index.php" class="btn btn-ghost">→ عودة</a>
         <div class="brand brand-center">
             <h1><?= h($agenda['title']) ?></h1>
             <?php if ($total > 0): ?>
@@ -81,6 +80,14 @@ $doneCount = count(array_filter($agenda['items'], fn($i) => $i['done']));
     <?php endif; ?>
 
 </main>
+
+<div class="page-actions">
+    <a href="index.php" class="btn-back">→ عودة</a>
+</div>
+
+<footer class="site-footer">
+    <p class="footer-year"><?= date('Y') ?></p>
+</footer>
 
 <!-- نافذة إضافة بند -->
 <div class="modal-overlay" id="addItemModal">
