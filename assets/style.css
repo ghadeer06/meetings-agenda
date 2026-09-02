@@ -12,13 +12,16 @@
     --font-body: 'Tajawal', 'Cairo', sans-serif;
 }
 
-* { box-sizing: border-box; }
-
-html {
-    font-size: 19px; /* حجم أساسي أكبر لسهولة القراءة لكبار السن */
+* {
+    box-sizing: border-box;
 }
 
-html, body {
+html {
+    font-size: 19px;
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
     background: var(--white);
@@ -26,16 +29,36 @@ html, body {
     font-family: var(--font-body);
     direction: rtl;
     line-height: 1.65;
+    height: 100%;
 }
 
-h1, h2, h3 {
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page,
+.page-narrow {
+    flex: 1 0 auto;
+}
+
+h1,
+h2,
+h3 {
     font-family: var(--font-head);
     margin: 0;
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-/* ---------- Topbar ---------- */
+
+/* =========================================
+   Topbar
+========================================= */
 
 .topbar {
     background: var(--green);
@@ -95,7 +118,10 @@ a { color: inherit; text-decoration: none; }
     font-weight: 400;
 }
 
-/* ---------- Buttons ---------- */
+
+/* =========================================
+   Buttons
+========================================= */
 
 .btn {
     font-family: var(--font-head);
@@ -107,21 +133,30 @@ a { color: inherit; text-decoration: none; }
     cursor: pointer;
     white-space: nowrap;
     min-height: 52px;
-    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
 }
 
 .btn-primary {
     background: var(--white);
     color: var(--green-dark);
 }
-.btn-primary:hover { background: var(--green-tint); }
+
+.btn-primary:hover {
+    background: var(--green-tint);
+}
 
 .btn-ghost {
     background: transparent;
     color: var(--white);
     border-color: rgba(255,255,255,0.6);
 }
-.btn-ghost:hover { background: rgba(255,255,255,0.14); }
+
+.btn-ghost:hover {
+    background: rgba(255,255,255,0.14);
+}
 
 .icon-btn {
     background: transparent;
@@ -135,21 +170,32 @@ a { color: inherit; text-decoration: none; }
     min-width: 44px;
     min-height: 44px;
 }
-.icon-btn:hover { background: #FBEBEA; color: var(--danger); }
 
-/* ---------- Page layout ---------- */
+.icon-btn:hover {
+    background: #FBEBEA;
+    color: var(--danger);
+}
+
+
+/* =========================================
+   Page Layout
+========================================= */
 
 .page {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     padding: 34px 28px 70px;
 }
 
 .page-narrow {
     max-width: 760px;
+    width: 100%;
 }
 
-.search-row { margin-bottom: 26px; }
+.search-row {
+    margin-bottom: 26px;
+}
 
 .search-input {
     width: 100%;
@@ -159,6 +205,7 @@ a { color: inherit; text-decoration: none; }
     font-family: var(--font-body);
     font-size: 1.1rem;
 }
+
 .search-input:focus {
     outline: 3px solid var(--green);
     outline-offset: 1px;
@@ -170,14 +217,27 @@ a { color: inherit; text-decoration: none; }
     color: var(--muted);
     font-size: 1.15rem;
 }
-.empty-state p { margin: 6px 0; }
-.empty-state .muted { font-size: 1rem; }
 
-/* ---------- Agenda cards ---------- */
+.empty-state p {
+    margin: 6px 0;
+}
+
+.empty-state .muted {
+    font-size: 1rem;
+}
+
+
+/* =========================================
+   Agenda Cards
+   3 بطاقات جنب بعض
+========================================= */
 
 .agenda-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+    /* ثلاث أجندات في الصف */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: 22px;
 }
 
@@ -186,12 +246,21 @@ a { color: inherit; text-decoration: none; }
     display: flex;
     flex-direction: column;
     gap: 14px;
+
     background: var(--white);
+
     border: 2px solid var(--line);
     border-right: 6px solid var(--green);
+
     border-radius: var(--radius);
+
     padding: 26px;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
+
+    min-width: 0;
+
+    transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease;
 }
 
 .agenda-card:hover {
@@ -199,24 +268,32 @@ a { color: inherit; text-decoration: none; }
     border-right-color: var(--green-dark);
 }
 
-/* رابط ممتد يغطي كامل البطاقة، بينما يبقى زر الحذف فوقه قابلًا للنقر */
+
+/* الرابط يغطي البطاقة كاملة */
+
 .agenda-card-link {
     position: absolute;
     inset: 0;
     z-index: 1;
     border-radius: inherit;
 }
+
 .agenda-card-link:focus-visible {
     outline: 3px solid var(--green-dark);
     outline-offset: 2px;
 }
 
+
+/* محتوى البطاقة */
+
 .agenda-card-top {
     position: relative;
     z-index: 2;
+
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+
     gap: 10px;
 }
 
@@ -226,15 +303,21 @@ a { color: inherit; text-decoration: none; }
     line-height: 1.45;
 }
 
-.inline-delete { margin: -8px -8px 0 0; }
+.inline-delete {
+    margin: -8px -8px 0 0;
+}
 
 .badge {
     display: inline-block;
+
     font-size: 1rem;
     font-weight: 500;
+
     color: var(--green-dark);
     background: var(--green-tint);
+
     padding: 7px 16px;
+
     border-radius: 999px;
 }
 
@@ -249,36 +332,64 @@ a { color: inherit; text-decoration: none; }
     margin-top: auto;
 }
 
-/* ---------- Item list ---------- */
+
+/* =========================================
+   Item List
+   البنود طويلة وتحت بعض
+========================================= */
 
 .progress-track {
     height: 10px;
+
     background: var(--green-tint);
+
     border-radius: 999px;
+
     margin-bottom: 28px;
+
     overflow: hidden;
 }
+
 .progress-fill {
     height: 100%;
     background: var(--green);
 }
 
+
+/* القائمة كاملة بعرض الصفحة */
+
 .item-list {
     list-style: none;
+
     margin: 0;
     padding: 0;
+
     display: flex;
     flex-direction: column;
+
+    /* كل بند تحت الثاني */
     gap: 14px;
+
+    width: 100%;
 }
 
+
+/* كل بند طويل */
+
 .item-row {
+    width: 100%;
+
     display: flex;
     align-items: center;
+
     gap: 16px;
+
     border: 2px solid var(--line);
+
     border-radius: var(--radius);
+
     padding: 18px 20px;
+
     background: var(--white);
 }
 
@@ -287,18 +398,31 @@ a { color: inherit; text-decoration: none; }
     border-color: var(--green);
 }
 
-.item-toggle-form { display: contents; }
+.item-toggle-form {
+    display: contents;
+}
+
+
+/* زر الصح */
 
 .check-btn {
     width: 38px;
     height: 38px;
+
     flex-shrink: 0;
+
     border-radius: 8px;
+
     border: 3px solid var(--green);
+
     background: var(--white);
+
     color: var(--white);
+
     font-size: 1.15rem;
+
     cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -308,39 +432,57 @@ a { color: inherit; text-decoration: none; }
     background: var(--green);
 }
 
+
+/* نص البند */
+
 .item-body {
     flex: 1;
+
     display: flex;
     flex-direction: column;
+
     min-width: 0;
 }
 
 .item-text {
     font-size: 1.2rem;
+
     word-break: break-word;
 }
 
 .is-done .item-text {
     color: var(--muted);
+
     text-decoration: line-through;
 }
 
 .item-date {
     font-size: 0.9rem;
+
     color: var(--muted);
+
     margin-top: 4px;
 }
 
-/* ---------- Modal ---------- */
+
+/* =========================================
+   Modal
+========================================= */
 
 .modal-overlay {
     display: none;
+
     position: fixed;
+
     inset: 0;
+
     background: rgba(8, 46, 24, 0.4);
+
     align-items: center;
     justify-content: center;
+
     padding: 20px;
+
     z-index: 50;
 }
 
@@ -350,81 +492,254 @@ a { color: inherit; text-decoration: none; }
 
 .modal-box {
     background: var(--white);
+
     border-radius: var(--radius);
+
     padding: 34px;
+
     width: 100%;
+
     max-width: 440px;
 }
 
 .modal-box h3 {
     font-size: 1.4rem;
+
     margin-bottom: 20px;
 }
 
 .modal-box label {
     display: block;
+
     font-size: 1rem;
+
     color: var(--muted);
+
     margin-bottom: 8px;
 }
 
 .modal-box input[type="text"] {
     width: 100%;
+
     padding: 14px 16px;
+
     border: 2px solid var(--line);
+
     border-radius: var(--radius);
+
     font-family: var(--font-body);
+
     font-size: 1.1rem;
+
     margin-bottom: 24px;
 }
 
 .modal-box input[type="text"]:focus {
     outline: 3px solid var(--green);
+
     outline-offset: 1px;
 }
 
 .modal-actions {
     display: flex;
+
     justify-content: flex-end;
+
     gap: 12px;
+
     flex-wrap: wrap;
 }
 
 .modal-actions .btn-ghost {
     background: transparent;
+
     color: var(--muted);
+
     border-color: var(--line);
 }
-.modal-actions .btn-ghost:hover { background: #F5F5F5; }
+
+.modal-actions .btn-ghost:hover {
+    background: #F5F5F5;
+}
 
 .modal-actions .btn-primary {
     background: var(--green);
+
     color: var(--white);
 }
-.modal-actions .btn-primary:hover { background: var(--green-dark); }
 
-/* ---------- Responsive: iPad / تابلت ---------- */
-
-@media (max-width: 900px) {
-    html { font-size: 18px; }
-    .topbar-inner { padding: 18px 22px; }
-    .page { padding: 26px 22px 60px; }
-    .agenda-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.modal-actions .btn-primary:hover {
+    background: var(--green-dark);
 }
 
-/* ---------- Responsive: جوال ---------- */
+
+/* =========================================
+   زر العودة
+========================================= */
+
+.page-actions {
+    max-width: 760px;
+
+    margin: 40px auto 0;
+
+    padding: 0 28px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.btn-back {
+    font-family: var(--font-head);
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    padding: 14px 40px;
+
+    min-height: 52px;
+
+    width: 100%;
+
+    max-width: 320px;
+
+    border-radius: var(--radius);
+
+    border: 2px solid var(--green);
+
+    background: var(--white);
+
+    color: var(--green-dark);
+
+    text-align: center;
+}
+
+.btn-back:hover {
+    background: var(--green-tint);
+
+    border-color: var(--green-dark);
+}
+
+
+/* =========================================
+   Footer
+========================================= */
+
+.site-footer {
+    margin-top: 32px;
+
+    padding: 26px 28px 34px;
+
+    text-align: center;
+
+    background: var(--green);
+
+    color: var(--white);
+}
+
+.footer-title {
+    font-size: 1.15rem;
+
+    font-weight: 700;
+}
+
+.footer-year {
+    margin: 6px 0 0;
+
+    font-size: 1rem;
+
+    color: rgba(255,255,255,0.85);
+}
+
+
+/* =========================================
+   Responsive - Tablet
+   شاشتين جنب بعض
+========================================= */
+
+@media (max-width: 900px) {
+
+    html {
+        font-size: 18px;
+    }
+
+    .topbar-inner {
+        padding: 18px 22px;
+    }
+
+    .page {
+        padding: 26px 22px 60px;
+    }
+
+    .agenda-grid {
+        /* أجندتين جنب بعض */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .item-row {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   Responsive - Mobile
+   واحدة تحت الثانية
+========================================= */
 
 @media (max-width: 600px) {
-    html { font-size: 17.5px; }
+
+    html {
+        font-size: 17.5px;
+    }
+
     .topbar-inner {
         flex-direction: column;
+
         align-items: stretch;
+
         text-align: center;
+
         gap: 14px;
     }
-    .brand { justify-content: center; }
-    .topbar .btn { width: 100%; }
-    .agenda-grid { grid-template-columns: 1fr; }
-    .item-row { padding: 16px; }
-    .modal-box { padding: 26px 22px; }
+
+    .brand {
+        justify-content: center;
+    }
+
+    .topbar .btn {
+        width: 100%;
+    }
+
+    .agenda-grid {
+        /* أجندة واحدة في كل صف */
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .agenda-card {
+        padding: 22px;
+    }
+
+    .item-row {
+        width: 100%;
+
+        padding: 16px;
+
+        gap: 12px;
+    }
+
+    .item-text {
+        font-size: 1.1rem;
+    }
+
+    .modal-box {
+        padding: 26px 22px;
+    }
+
+    .btn-back {
+        width: 100%;
+    }
 }
