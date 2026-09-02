@@ -11,8 +11,6 @@ $action = $_POST['action'] ?? '';
 $data = load_agendas();
 
 switch ($action) {
-
-    // إضافة أجندة جديدة
     case 'add_agenda':
         $title = trim($_POST['title'] ?? '');
         if ($title !== '') {
@@ -27,7 +25,6 @@ switch ($action) {
         header('Location: index.php');
         exit;
 
-    // حذف أجندة كاملة
     case 'delete_agenda':
         $id = $_POST['agenda_id'] ?? '';
         $data['agendas'] = array_values(array_filter(
@@ -38,7 +35,6 @@ switch ($action) {
         header('Location: index.php');
         exit;
 
-    // إضافة بند إلى أجندة
     case 'add_item':
         $agendaId = $_POST['agenda_id'] ?? '';
         $text = trim($_POST['text'] ?? '');
@@ -57,7 +53,6 @@ switch ($action) {
         header('Location: agenda.php?id=' . urlencode($agendaId));
         exit;
 
-    // تبديل حالة البند (منجز / غير منجز)
     case 'toggle_item':
         $agendaId = $_POST['agenda_id'] ?? '';
         $itemId = $_POST['item_id'] ?? '';
@@ -76,7 +71,6 @@ switch ($action) {
         header('Location: agenda.php?id=' . urlencode($agendaId));
         exit;
 
-    // حذف بند من الأجندة
     case 'delete_item':
         $agendaId = $_POST['agenda_id'] ?? '';
         $itemId = $_POST['item_id'] ?? '';
