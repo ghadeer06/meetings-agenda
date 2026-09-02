@@ -24,7 +24,7 @@ $agendas = array_reverse($agendas);
         <div class="brand">
             <span class="brand-mark" aria-hidden="true"></span>
             <div>
-                <h1>أجندة الاجتماع</h1>
+                <h1>أجندة اجتماع</h1>
                 <p class="brand-sub">قائمة بنود الاجتماع ومتابعتها</p>
             </div>
         </div>
@@ -75,6 +75,10 @@ $agendas = array_reverse($agendas);
     <?php endif; ?>
 
 </main>
+
+<footer class="site-footer">
+    <p class="footer-year"><?= date('Y') ?></p>
+</footer>
 
 <!-- نافذة إضافة أجندة -->
 <div class="modal-overlay" id="addAgendaModal">
