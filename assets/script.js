@@ -1,4 +1,3 @@
-// فتح/إغلاق نافذة إضافة أجندة (في الصفحة الرئيسية)
 (function () {
     const openBtn = document.getElementById('openAddAgenda');
     const cancelBtn = document.getElementById('cancelAddAgenda');
@@ -16,7 +15,6 @@
     }
 })();
 
-// فتح/إغلاق نافذة إضافة بند (في صفحة تفاصيل الأجندة)
 (function () {
     const openBtn = document.getElementById('openAddItem');
     const cancelBtn = document.getElementById('cancelAddItem');
@@ -34,14 +32,12 @@
     }
 })();
 
-// إغلاق أي نافذة مفتوحة بمفتاح Escape
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         document.querySelectorAll('.modal-overlay.is-open').forEach((m) => m.classList.remove('is-open'));
     }
 });
 
-// بحث فوري في بطاقات الأجندات (الصفحة الرئيسية)
 (function () {
     const input = document.getElementById('searchInput');
     const grid = document.getElementById('agendaGrid');
