@@ -89,7 +89,7 @@ $doneCount = count(array_filter($agenda['items'], fn($i) => $i['done']));
     <p class="footer-year"><?= date('Y') ?></p>
 </footer>
 
-<!-- نافذة إضافة بند -->
+
 <div class="modal-overlay" id="addItemModal">
     <div class="modal-box">
         <h3>إضافة بند جديد</h3>
