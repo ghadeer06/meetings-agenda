@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/functions.php';
 
 $data = load_agendas();
 $agendas = $data['agendas'];
+// الأحدث أولًا
 $agendas = array_reverse($agendas);
 ?>
 <!DOCTYPE html>
@@ -20,16 +21,22 @@ $agendas = array_reverse($agendas);
 
 <header class="topbar">
     <div class="topbar-inner">
+
         <div class="brand">
-            <span class="brand-mark" aria-hidden="true"></span>
+            <div class="brand-logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+
             <div>
-                <h1>أجندة الاجتماع</h1>
+                <h1>أجندة اجتماع</h1>
                 <p class="brand-sub">قائمة بنود الاجتماع ومتابعتها</p>
             </div>
         </div>
+
         <button type="button" class="btn btn-primary" id="openAddAgenda">+ إضافة أجندة</button>
     </div>
 </header>
+
 
 <main class="page">
 
@@ -47,8 +54,7 @@ $agendas = array_reverse($agendas);
     <?php else: ?>
         <div class="agenda-grid" id="agendaGrid">
             <?php foreach ($agendas as $agenda):
-                $total = count($agenda['items']);
-                $doneCount = count(array_filter($agenda['items'], fn($i) => $i['done']));
+                
             ?>
             <div class="agenda-card" data-title="<?= h($agenda['title']) ?>">
                 <a class="agenda-card-link" href="agenda.php?id=<?= h($agenda['id']) ?>" aria-label="فتح أجندة: <?= h($agenda['title']) ?>"></a>
@@ -60,13 +66,7 @@ $agendas = array_reverse($agendas);
                         <button type="submit" class="icon-btn" title="حذف الأجندة" aria-label="حذف الأجندة">✕</button>
                     </form>
                 </div>
-                <div class="agenda-card-meta">
-                    <?php if ($total === 0): ?>
-                        <span class="badge badge-empty">لا توجد بنود</span>
-                    <?php else: ?>
-                        <span class="badge"><?= $doneCount ?> من <?= $total ?> مكتمل</span>
-                    <?php endif; ?>
-                </div>
+                
                 <span class="agenda-card-date"><?= h(format_date($agenda['created_at'])) ?></span>
             </div>
             <?php endforeach; ?>
@@ -79,7 +79,7 @@ $agendas = array_reverse($agendas);
     <p class="footer-year"><?= date('Y') ?></p>
 </footer>
 
-
+<!-- نافذة إضافة أجندة -->
 <div class="modal-overlay" id="addAgendaModal">
     <div class="modal-box">
         <h3>إضافة أجندة جديدة</h3>
